@@ -1,0 +1,14 @@
+on run {argv, parameters}
+        if length of argv is not 1 then
+                display alert "Alert" message "Please select a single folder!"
+        else
+                set parent to POSIX path of first item of argv
+                set parentPath to POSIX path of first item of argv
+                try
+                        set childName to text returned of (display dialog "New folder name" default answer "new folder")
+                on error
+                        return
+                end try
+                do shell script "mkdir \"" & parentPath & "/" & childName & "\""
+        end if
+end run
